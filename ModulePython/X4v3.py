@@ -40,7 +40,6 @@ def X4Size(im,imF,step,factor,V,model,Image,ImageChops):
                 sr_imageF=ImageChops.add(sr_image,imF)
                 
                 imM2.alpha_composite(sr_imageF, dest=(left*factor, top*factor))
-                imM2.save("B2_" + str(i_height)+"x"+str(i_width)+".png")
         #B3
         for i_height in range(int(-step/2), height-1, step):
             for i_width in range(0, width-1, step):
@@ -58,7 +57,6 @@ def X4Size(im,imF,step,factor,V,model,Image,ImageChops):
                 sr_imageF=ImageChops.add(sr_image,imF)
                 
                 imM2.alpha_composite(sr_imageF, dest=(left*factor, top*factor))
-                imM2.save("B3_" + str(i_height)+"x"+str(i_width)+".png")
         #Merge
         imM1.alpha_composite(imM2)
     imM1 = imM1.convert("RGB")
