@@ -5,7 +5,7 @@ def X4Size(im,imF,step,factor,V,model,Image,ImageChops):
     print(height)
     print(width)
     #Image de fond
-    imM1 = Image.new(mode="RGBA", size=(height*factor, width*factor),color=(0, 0, 0, 255))
+    imM1 = Image.new(mode="RGBA", size=(height*factor, width*factor),color=(0, 0, 0, 0))
     #B1
     for i_height in range(0, height-1, step):
         for i_width in range(0, width-1, step):
@@ -22,7 +22,7 @@ def X4Size(im,imF,step,factor,V,model,Image,ImageChops):
 
             imM1.alpha_composite(sr_image, dest=(left*factor, top*factor))
     if step!=width :
-        imM2 = Image.new(mode="RGBA", size=(height*factor, width*factor),color=(0, 0, 0, 255))
+        imM2 = Image.new(mode="RGBA", size=(height*factor, width*factor),color=(0, 0, 0, 0))
         #B2
         for i_height in range(0, height-1, int(step/2)):
             for i_width in range(0, width-1, int(step/2)):
