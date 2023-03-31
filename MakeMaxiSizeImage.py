@@ -22,6 +22,11 @@ def PxToCm(PxSize,Dpi):
     return float(PxSize)*2.56/Dpi
 
 def MakeSuperSize(pathImag,V,MaxSizeInCm,Dpi):
+    print("*************************************************************")
+    print("Path File In : "+pathImag)
+    print("Version de l'ago : "+str(V))
+    print("DPI : "+str(Dpi))
+    print("Taille min : "+str(MaxSizeInCm)+" cm")
     # Opens a image in RGB mode
     im = Image.open(pathImag).convert('RGB')
     widthMaster, heightMaster = im.size
