@@ -99,17 +99,17 @@ def MakeSuperSize(pathImag,V,MaxSizeInCm,Dpi):
         im.save(strName,quality=85)
     else :
         strName+=".tif"
-        im.save(strName,quality=85)
+        im.save(strName,compression='tiff_lzw')
     return strName
 
-MakeSuperSize(FileD,0,100,300)
-MakeSuperSize(FileD,1,100,300)
-MakeSuperSize(FileD,2,100,300)
-MakeSuperSize(FileD,3,100,300)
-MakeSuperSize(FileD,4,100,300)
+MakeSuperSize(FileB,0,100,300)
+MakeSuperSize(FileB,1,100,300)
+MakeSuperSize(FileB,2,100,300)
+MakeSuperSize(FileB,3,100,300)
+MakeSuperSize(FileB,4,100,300)
 
-#MakeSuperSize(FileD,0,200,300)
-#MakeSuperSize(FileD,1,200,300)
-#MakeSuperSize(FileD,2,200,300)
-#MakeSuperSize(FileD,3,200,300)
-#MakeSuperSize(FileD,4,200,300)
+MakeSuperSize(FileB,0,200,300)
+MakeSuperSize(FileB,1,200,300)
+MakeSuperSize(FileB,2,200,300)
+MakeSuperSize(FileB,3,200,300)
+MakeSuperSize(FileB,4,200,300)

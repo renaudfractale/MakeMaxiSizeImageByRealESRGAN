@@ -22,7 +22,6 @@ def X4Size(im,imF,step,factor,V,model,Image,ImageChops):
             imM1.alpha_composite(sr_image, dest=(left*factor, top*factor))
     if step!=width :
         imM2 = Image.new(mode="RGBA", size=(height*factor, width*factor),color=(0, 0, 0,0))
-        imM2.save("imM2_A.png")
         #B2
         for i_height in range(int(-step/2), height-1, step):
             for i_width in range(int(-step/2), width-1, step):
