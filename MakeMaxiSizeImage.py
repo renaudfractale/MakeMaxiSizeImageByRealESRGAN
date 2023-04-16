@@ -7,13 +7,24 @@ from RealESRGAN import RealESRGAN
 import time
 import datetime
 import ModulePython
+from os import listdir
+from os.path import isfile, join
+from pathlib import Path
+from os import walk
 
 FileA = "./Exemples/A.jpeg"
 FileB = "./Exemples/B.jpeg"
 FileC = "./Exemples/C.png"
 FileD = "./Exemples/D.jpg"
 
+FolderIn = "./inputs"
 
+ListeFichiers = []
+for (repertoire, sousRepertoires, fichiers) in walk(FolderIn):
+    ListeFichiers.extend(fichiers)
+for i in ListeFichiers:
+    print(i)
+TaillesInCm=(100,200,400)#60,
 def MakeTimestamp():
     now = datetime.datetime.now()
     return now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -93,7 +104,7 @@ def MakeSuperSize(pathImag,V,MaxSizeInCm,Dpi):
     im = im.convert("RGB")
     widthFinal, heightFinal = im.size
     # si len < 65500 ==> Jpg possible
-    strName = MakeTimestamp()+"_V"+ str(V)+"_"+"B_"+str(widthFinal)+"x"+str(heightFinal)
+    strName = MakeTimestamp()+"_V"+ str(V)+"_"+Path(pathImag).stem+"_"+str(widthFinal)+"x"+str(heightFinal)
     if height<65500:
         strName+=".jpg"
         im.save(strName,quality=85)
@@ -102,14 +113,18 @@ def MakeSuperSize(pathImag,V,MaxSizeInCm,Dpi):
         im.save(strName,compression='tiff_lzw')
     return strName
 
-MakeSuperSize(FileB,0,100,300)
-MakeSuperSize(FileB,1,100,300)
-MakeSuperSize(FileB,2,100,300)
-MakeSuperSize(FileB,3,100,300)
-MakeSuperSize(FileB,4,100,300)
+for TailleInCm in TaillesInCm:
+    for Fichier in ListeFichiers:
+        MakeSuperSize(FolderIn+"/"+Fichier,4,TailleInCm,300)
 
-MakeSuperSize(FileB,0,200,300)
-MakeSuperSize(FileB,1,200,300)
-MakeSuperSize(FileB,2,200,300)
-MakeSuperSize(FileB,3,200,300)
-MakeSuperSize(FileB,4,200,300)
+#MakeSuperSize(FileB,0,100,300)
+#MakeSuperSize(FileB,1,100,300)
+#MakeSuperSize(FileB,2,100,300)
+#MakeSuperSize(FileB,3,100,300)
+#MakeSuperSize(FileB,4,100,300)
+
+#MakeSuperSize(FileB,0,200,300)
+#MakeSuperSize(FileB,1,200,300)
+#MakeSuperSize(FileB,2,200,300)
+#MakeSuperSize(FileB,3,200,300)
+#MakeSuperSize(FileB,4,200,300)
